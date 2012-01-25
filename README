@@ -1,0 +1,9 @@
+Vidalia is a slicing program for rapid prototyping machines.
+
+FEATURES
+
+  * Handles high quality STEP files in addition to STL
+  * Easy to use
+  * Web Based
+  * Produces accurate, tight GCODE with G2 and G3 arcs
+ 

@@ -1,0 +1,37 @@
+====================
+   SLICING Requirements
+=====================
+
+In 3d printing, 'slicing' is the process of converting a 3d object into layers, which can then be drawn from bottom to top to create an object.  There are many parameters and concepts involved in the process, this document describes the most common parts to the problem
+
+The general approach to the problem is to perform these steps:
+
+(1) select a layer height, and compute the cross-section of the solid at each layer.  The result will be set of closed curves, which represent the boundaries of the object
+
+(2) for each layer, compute a set of paths that can be used to fill that layer.  The general approach here has these sub-steps:
+    (a) compute one set of paths for 'walls' of the object. these are typically offsets from the outer boundaries of the object
+	(b) compute fill paths, which fill the interior of the object
+	(c) join the paths in various ways to maximize print time
+	
+(3) perform a number of other analytical functions required for printing, such as:
+	(a) determine if any supports are needed
+	
+
+=======
+  Glossary of Terms
+=======
+
+3d geometry terms
+	Curve:  a line, arc, or geometric construct that defines a boundary. 
+	Solid:  a 3d representation of a solid object
+	BoundaryRepresentation ( BREP):   a computer model of a 3d object defined by enumerating the enclosing faces
+	STEP:   a standard file format for exchanging CAD files. Capable of describing objects in terms of faces that include curves and splines
+	STL:	a file format that represents a solid in terms of a mesh of triangles
+	Face:	one surface of a solid model
+	Edge:   a limited portion of a curve that defines one edge of a face in a solid model
+
+slicing terms	
+	Slice:  is a 2-d cross section of a 3d object, generally in the x-y plane ( with z going upwards )
+	Perimeter: a path that follows the outside or inside walls of a slice
+	Fill: paths which draw the inside of an object
+	honeycomb fill:  hexagonal paths which fill the interior of an object like a honeycomb
